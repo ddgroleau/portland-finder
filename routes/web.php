@@ -2,6 +2,7 @@
 
 use App\Models\Location;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $data = Location::all();
-    return view('home',['data'=> $data]);
+    return Inertia::render('Home',['locations'=> $data]);
 });
