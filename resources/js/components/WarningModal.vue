@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{optedIn: boolean}>();
+defineProps<{optedIn: boolean,setOptedIn: (val:boolean)=>void}>();
 </script>
 
 <template>
@@ -20,7 +20,7 @@ defineProps<{optedIn: boolean}>();
                 not be sold to or shared with anyone besides the app creator... and maybe his wife, who won't care.
             </i>
             <div class="flex py-4 gap-8 flex-wrap justify-center mt-4">
-                <button @click="()=>optedIn = true" class="py-2 px-4 bg-green-400 rounded text-black">I understand the peril</button>
+                <button @click="()=>setOptedIn(true)" class="py-2 px-4 bg-green-400 rounded text-black">I understand the peril</button>
                 <a href="javascript: history.back()" class="py-2 px-4 bg-red-400 rounded text-black">Too perilous for me</a>
             </div>
         </div>

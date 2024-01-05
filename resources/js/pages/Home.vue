@@ -28,6 +28,7 @@ const markers: Ref<MarkerElements[]> = ref([]);
 
 const setMarkerRef = (index: number) => (el: MarkerElements) => markers.value[index] = el;
 const toCoords = (location:Location) =>[ location.latitude ?? 0, location.longitude ?? 0 ];
+const setOptedIn = (val:boolean) => optedIn.value = val;
 const setZoom = (newZoom:number,location:Location, index: number = -1) => {
     center.value = toCoords(location);
 
@@ -146,7 +147,7 @@ if (!geo) {
                 </div>
             </section>
         </div>
-    <warning-modal :opted-in="optedIn"/>
+    <warning-modal :opted-in="optedIn" :set-opted-in="setOptedIn" />
     </Layout>
 </template>
 
