@@ -63,7 +63,7 @@ jobs:
             -e DB_PORT={envArray[3]} \
             -e DB_DATABASE={envArray[4]} \
             -e DB_USERNAME={envArray[5]} \
-            -e DB_PASSWORD={envArray[6]} ]
+            -e DB_PASSWORD={envArray[6]} ] \
             "${envArray[1]}"/portland-finder \
             && exit \
             && exit 0;
