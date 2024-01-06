@@ -55,15 +55,15 @@ jobs:
               then echo "No container found. Starting portland-finder container..."; \
             else docker stop portland-finder && docker rm portland-finder; \
             fi \
-            && docker run -d \
+            && docker run -d \S
             -p "${envArray[0]}":8000 \
             --name portland-finder \
             --restart always \
-            -e DB_HOST={envArray[2]} \
-            -e DB_PORT={envArray[3]} \
-            -e DB_DATABASE={envArray[4]} \
-            -e DB_USERNAME={envArray[5]} \
-            -e DB_PASSWORD={envArray[6]} \
+            -e DB_HOST=${envArray[2]} \
+            -e DB_PORT=${envArray[3]} \
+            -e DB_DATABASE=${envArray[4]} \
+            -e DB_USERNAME=${envArray[5]} \
+            -e DB_PASSWORD=${envArray[6]} \
             "${envArray[1]}"/portland-finder \
             && exit \
             && exit 0;
