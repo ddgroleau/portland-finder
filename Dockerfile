@@ -16,5 +16,7 @@ WORKDIR /app
 COPY . ./
 COPY --from=build /app/public/build/ /app/public/build/
 RUN composer install
+RUN php artisan key:generate
+RUN php artisan config:cache
 
 EXPOSE 8000
