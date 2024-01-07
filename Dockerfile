@@ -15,5 +15,6 @@ FROM bitnami/laravel:10 as production
 WORKDIR /app
 COPY . ./
 COPY --from=build /app/public/build/ /app/public/build/
+RUN composer install
 
 EXPOSE 8000
