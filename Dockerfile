@@ -1,18 +1,10 @@
-# Build Vue artifacts
-FROM node:alpine AS build
-
-WORKDIR /app
-COPY . ./
-
-RUN npm install && npm run build
-
-
 # Build image for production
-FROM bitnami/laravel:10 as production
+FROM bitnami/laravel:10
 
 WORKDIR /app
 COPY . ./
-COPY --from=build /app/public/build/ /app/public/build/
 RUN composer install
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && apt-get install -y nodejs
+RUN npm install && npm run build
 
 EXPOSE 8000
