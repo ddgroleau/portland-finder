@@ -41,15 +41,16 @@ jobs:
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          APP_KEY: ${{ secrets.APP_KEY }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          envs: HOST_PORT,DOCKERHUB_USERNAME,DB_HOST,DB_PORT,DB_DATABASE,DB_USERNAME,DB_PASSWORD
+          envs: HOST_PORT,DOCKERHUB_USERNAME,DB_HOST,DB_PORT,DB_DATABASE,DB_USERNAME,DB_PASSWORD,APP_KEY
           script: |
-            export envArray=( $HOST_PORT $DOCKERHUB_USERNAME $DB_HOST $DB_PORT $DB_DATABASE $DB_USERNAME $DB_PASSWORD ) \
+            export envArray=( $HOST_PORT $DOCKERHUB_USERNAME $DB_HOST $DB_PORT $DB_DATABASE $DB_USERNAME $DB_PASSWORD $APP_KEY) \
             && docker pull ${envArray[1]}/portland-finder \
             && if [[ -z $(docker container ls -a | grep "portland-finder") ]]; \
               then echo "No container found. Starting portland-finder container..."; \
@@ -64,6 +65,7 @@ jobs:
             -e DB_DATABASE=${envArray[4]} \
             -e DB_USERNAME=${envArray[5]} \
             -e DB_PASSWORD=${envArray[6]} \
+            -e $APP_KEY=${envArray[7]} \
             "${envArray[1]}"/portland-finder \
             && exit \
             && exit 0;
