@@ -18,9 +18,9 @@ import Layout from "@/components/Layout.vue";
             <h2 class="font-semibold text-lg mt-2">4. Disclaimer</h2>
             <p>The App is provided "as is" without any warranties, express or implied. The developers of the App are not responsible for any damages or losses that may result from the use or inability to use the App.</p>
             <h2 class="font-semibold text-lg mt-2">5. Changes to Terms</h2>
-            <p>We reserve the right to update or change these Terms of Service at any time. Any changes will be effective immediately upon posting on this page.</p>
+            <p>I reserve the right to update or change these Terms of Service at any time. Any changes will be effective immediately upon posting on this page.</p>
             <h2 class="font-semibold text-lg mt-2">6. Contact Information</h2>
-            <p>If you have any questions or concerns about these Terms of Service, please contact me at <a href="mailto:ddgroleau.developer@gmail.com">ddgroleau.developer@gmail.com</a>.</p>
+            <p>If you have any questions or concerns about these Terms of Service, please contact me at <a href="mailto:dan@dangroleauwebdevelopment.com">dan@dangroleauwebdevelopment.com</a>.</p>
         </div>
         </Layout>
 </template>

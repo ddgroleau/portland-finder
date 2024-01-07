@@ -19,7 +19,7 @@ import {Head} from "@inertiajs/vue3";
             <h2 class="font-semibold text-lg mt-2">4. Changes to Privacy Policy</h2>
             <p>I reserve the right to update or change this Privacy Policy at any time. Any changes will be effective immediately upon posting on this page.</p>
             <h2 class="font-semibold text-lg mt-2">5. Contact Information</h2>
-            <p>If you have any questions or concerns about this Privacy Policy, please contact me at <a href="mailto:ddgroleau.developer@gmail.com">ddgroleau.developer@gmail.com</a>.</p>
+            <p>If you have any questions or concerns about this Privacy Policy, please contact me at <a href="mailto:dan@dangroleauwebdevelopment.com">dan@dangroleauwebdevelopment.com</a>.</p>
         </div>
     </Layout>
 </template>
