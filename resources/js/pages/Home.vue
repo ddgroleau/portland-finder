@@ -87,7 +87,7 @@ if (!geo) {
         <div class="flex flex-col items-center w-screen">
             <div class="flex flex-wrap items-center justify-center gap-x-8 mb-8 lg:mb-0">
                 <h1 class="py-8 font-semibold text-2xl text-center">Find City Trash Bag Vendors in Portland, ME</h1>
-                <select v-model="displayCount" @change="handleDisplayCountChange" class="z-[999] py-4 px-8 lg:py-2 lg:px-4 bg-white rounded-2xl border border-slate-800 shadow h-fit">
+                <select v-model="displayCount" @change="handleDisplayCountChange" class="z-[999] px-4 py-2 bg-white rounded-2xl border border-slate-800 shadow h-fit">
                     <option value="5">Show Closest (5) Vendors</option>
                     <option value="10">Show Closest (10) Vendors</option>
                     <option value="15">Show Closest (15) Vendors</option>
