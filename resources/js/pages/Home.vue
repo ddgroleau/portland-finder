@@ -25,6 +25,7 @@ const displayCount = ref(5);
 const optedIn = ref(false);
 const userMarkerText = ref("You are here!")
 const markers: Ref<MarkerElements[]> = ref([]);
+const activeMarker = ref(null);
 
 const setMarkerRef = (index: number) => (el: MarkerElements) => markers.value[index] = el;
 const toCoords = (location:Location) =>[ location.latitude ?? 0, location.longitude ?? 0 ];
@@ -34,8 +35,12 @@ const focusOnLocation = (newZoom:number, location:Location, index: number = -1) 
 
     const markerComponent = markers.value[index];
     if (markerComponent) {
-        markerComponent?.leafletObject._icon.scrollIntoView({ behavior: 'smooth', block: 'end' })
-        markerComponent?.leafletObject._icon.click();
+        const marker =  markerComponent?.leafletObject._icon;
+        marker.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        if(activeMarker.value !== marker) {
+            activeMarker.value = marker;
+            marker.click();
+        }
     }
 
     setTimeout(()=>{
