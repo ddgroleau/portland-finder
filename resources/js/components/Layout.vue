@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/vue3'
     <main class="flex flex-grow w-full h-full overflow-x-hidden">
         <slot />
     </main>
-    <footer class="flex w-full p-4 justify-center">
+    <footer class="flex w-full p-4 justify-center flex-wrap">
         ©{{ new Date().getFullYear() }}&nbsp;<a href="/" class="underline">Portland Finder App</a>&nbsp;&nbsp;
         |&nbsp;&nbsp;<a class="underline" href="mailto:dan@dangroleauwebdevelopment.com">Email Me</a>&nbsp;&nbsp;|
         &nbsp;&nbsp;<a class="underline" target="_blank" href="/terms-of-service">Terms of Service</a>&nbsp;&nbsp;|
