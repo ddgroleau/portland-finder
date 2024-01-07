@@ -67,7 +67,7 @@ jobs:
             -e DB_DATABASE=${envArray[4]} \
             -e DB_USERNAME=${envArray[5]} \
             -e DB_PASSWORD=${envArray[6]} \
-            -e $APP_KEY=${envArray[7]} \
+            -e APP_KEY=${envArray[7]} \
             -e APP_URL=${envArray[8]} \
             -e APP_DEBUG=${envArray[9]} \
             "${envArray[1]}"/portland-finder \
