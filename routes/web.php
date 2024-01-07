@@ -19,3 +19,12 @@ Route::get('/', function () {
     $data = Location::all();
     return Inertia::render('Home',['locations'=> $data]);
 });
+
+Route::get('/terms-of-service', function () {
+    return Inertia::render('TermsOfService');
+});
+
+Route::get('/privacy-policy', function () {
+    return Inertia::render('PrivacyPolicy');
+});
+
