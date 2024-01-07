@@ -1,6 +1,6 @@
 # Portland Finder
 
-## Database:
+## Database Migrations:
 
 ```bash
 php artisan make:migration create_locations_table 
