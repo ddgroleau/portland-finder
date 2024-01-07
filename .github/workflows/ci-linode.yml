@@ -58,6 +58,7 @@ jobs:
               then echo "No container found. Starting portland-finder container..."; \
             else docker stop portland-finder && docker rm portland-finder; \
             fi \
+            && docker system prune --force --volumes \
             && docker run -d \
             -p "${envArray[0]}":8000 \
             --name portland-finder \

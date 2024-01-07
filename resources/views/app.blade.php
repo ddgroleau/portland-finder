@@ -7,7 +7,7 @@
         @vite('resources/js/app.ts')
         @inertiaHead
     </head>
-    <body class="bg-slate-100 overflow-x-hidden">
+    <body class="bg-slate-100 max-w-screen overflow-x-hidden">
         @inertia
     </body>
 </html>

@@ -29,12 +29,14 @@ const markers: Ref<MarkerElements[]> = ref([]);
 const setMarkerRef = (index: number) => (el: MarkerElements) => markers.value[index] = el;
 const toCoords = (location:Location) =>[ location.latitude ?? 0, location.longitude ?? 0 ];
 const setOptedIn = (val:boolean) => optedIn.value = val;
-const setZoom = (newZoom:number,location:Location, index: number = -1) => {
+const focusOnLocation = (newZoom:number, location:Location, index: number = -1) => {
     center.value = toCoords(location);
 
     const markerComponent = markers.value[index];
-    if (markerComponent)
+    if (markerComponent) {
+        markerComponent?.leafletObject._icon.scrollIntoView({ behavior: 'smooth', block: 'end' })
         markerComponent?.leafletObject._icon.click();
+    }
 
     setTimeout(()=>{
         zoom.value = newZoom;
@@ -85,7 +87,7 @@ if (!geo) {
         <div class="flex flex-col items-center w-screen">
             <div class="flex flex-wrap items-center justify-center gap-x-8 mb-8 lg:mb-0">
                 <h1 class="py-8 font-semibold text-2xl text-center">Find City Trash Bag Vendors in Portland, ME</h1>
-                <select v-model="displayCount" @change="handleDisplayCountChange" class="z-[999] py-2 px-4 bg-white rounded-2xl border border-slate-800 shadow h-fit">
+                <select v-model="displayCount" @change="handleDisplayCountChange" class="z-[999] py-4 px-8 lg:py-2 lg:px-4 bg-white rounded-2xl border border-slate-800 shadow h-fit">
                     <option value="5">Show Closest (5) Vendors</option>
                     <option value="10">Show Closest (10) Vendors</option>
                     <option value="15">Show Closest (15) Vendors</option>
@@ -114,7 +116,7 @@ if (!geo) {
                             </l-popup>
                         </l-marker>
                         <div v-for="(store,index) in stores.slice(0,displayCount)">
-                            <l-marker :ref="setMarkerRef(index)" :lat-lng="toCoords(store)" @click="setZoom(16,store)" :icon="icon({
+                            <l-marker :ref="setMarkerRef(index)" :lat-lng="toCoords(store)" @click="focusOnLocation(16,store)" :icon="icon({
                                 iconUrl:'/assets/Icons8_flat_full_trash.png',
                                 iconSize: [32, 37],
                                 iconAnchor: [16, 8]
@@ -136,7 +138,7 @@ if (!geo) {
                 <div class="w-full">
                     <ol v-if="!loading" class="fbg-white fade-in list-decimal pl-6 flex flex-col gap-y-6 p-4 w-full lg:max-h-[800px] scrollbar lg:overflow-scroll">
                         <li class="flex flex-col list" v-for="(store,index) in stores.slice(0,displayCount)">
-                            <strong @click="setZoom(16,store,index)" class="mb-2 cursor-pointer">{{ stores.indexOf(store) + 1 }}) <span class="underline">{{ store.name }}</span></strong>
+                            <strong @click="focusOnLocation(16,store,index)" class="mb-2 cursor-pointer">{{ stores.indexOf(store) + 1 }}) <span class="underline">{{ store.name }}</span></strong>
                             <i class="mb-1">✔️ {{ store.distance }} mile(s) away</i>
                             <span>{{ store.streetAddress }}</span>
                             <span class="mb-1">{{ store.city }}, {{ store.state }}, {{ store.zipCode }}</span>
