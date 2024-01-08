@@ -54,8 +54,12 @@ const formatPhoneNumber = (phoneNumber: string): string => {
     return phoneNumber;
 }
 const getDirectionsUri = (originLat:number, originLng:number,location:Location) => {
-    const DIRECTIONS_BASE_URI = "https://www.google.com/maps/dir";
-    return `${DIRECTIONS_BASE_URI}/${originLat},${originLng}/${location.latitude},${location.longitude}`
+    const completeAddress = `${location.streetAddress}, ${location.city} ${location.state} ${location.zipCode}`
+    const directionsLink = new URL("https://www.google.com/maps/dir/");
+    directionsLink.searchParams.set("api","1");
+    directionsLink.searchParams.append("origin",`${originLat},${originLng}`);
+    directionsLink.searchParams.append("destination",completeAddress);
+    return directionsLink;
 }
 const handleDisplayCountChange = () => {
     zoom.value = INITIAL_ZOOM;
