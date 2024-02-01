@@ -18,7 +18,7 @@ class ClientRequest extends Model
 
     public static function create(?float $latitude, ?float $longitude)
     {
-        $ip = isset($_SERVER['REMOTE_ADDR']) 
+        $ip = !isset($_SERVER['HTTP_X_FORWARDED_FOR']) 
             ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) 
             : filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP);
 
