@@ -27,4 +27,3 @@ Route::get('/terms-of-service', function () {
 Route::get('/privacy-policy', function () {
     return Inertia::render('PrivacyPolicy');
 });
-

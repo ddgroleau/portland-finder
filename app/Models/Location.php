@@ -10,18 +10,7 @@ class Location extends Model
     use HasFactory;
 
     protected $casts = [
-        'distance' => 'float', // or 'double' depending on your preference
-    ];
-    protected $fillable = [
-        'name',
-        'streetAddress',
-        'city',
-        'state',
-        'zipCode',
-        'phoneNumber',
-        'latitude',
-        'longitude',
-        'distance',
+        'distance' => 'float',
     ];
 
     protected function getLatitude(): float

@@ -54,7 +54,7 @@ const formatPhoneNumber = (phoneNumber: string): string => {
     return phoneNumber;
 }
 const getDirectionsUri = (originLat:number, originLng:number,location:Location) => {
-    const completeAddress = `${location.streetAddress}, ${location.city} ${location.state} ${location.zipCode}`
+    const completeAddress = `${location.streetAddress}, ${location.streetAddress}, ${location.city} ${location.state} ${location.zipCode}`
     const directionsLink = new URL("https://www.google.com/maps/dir/");
     directionsLink.searchParams.set("api","1");
     directionsLink.searchParams.append("origin",`${originLat},${originLng}`);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClientRequest;
 use App\Models\Location;
 use Exception;
 use Illuminate\Http\Request;
@@ -23,6 +24,8 @@ class LocationsController extends Controller
         } catch(Exception $e) {
             return new Response(json_encode(["message"=>$e->getMessage()]),400);
         }
+
+        ClientRequest::create($lat,$lng);
 
         $locations = Location::all()->map(function(Location $location) use($lat,$lng)
         {
