@@ -16,7 +16,7 @@ class ClientRequest extends Model
         'longitude',
     ];
 
-    public static function create(?float $latitude, ?float $longitude)
+    public static function capture(?float $latitude, ?float $longitude)
     {
         $ip = !isset($_SERVER['HTTP_X_FORWARDED_FOR']) 
             ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) 

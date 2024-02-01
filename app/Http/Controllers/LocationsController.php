@@ -25,7 +25,7 @@ class LocationsController extends Controller
             return new Response(json_encode(["message"=>$e->getMessage()]),400);
         }
 
-        ClientRequest::create($lat,$lng);
+        ClientRequest::capture($lat,$lng);
 
         $locations = Location::all()->map(function(Location $location) use($lat,$lng)
         {
