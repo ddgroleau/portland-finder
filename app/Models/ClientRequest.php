@@ -18,14 +18,14 @@ class ClientRequest extends Model
 
     public static function capture(?float $latitude, ?float $longitude)
     {
-        $ip = !isset($_SERVER['HTTP_X_FORWARDED_FOR']) 
-            ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) 
+        $ip = !isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+            ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)
             : filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP);
 
         $clientRequest = ClientRequest::factory()->make([
             'ip_address' => !$ip ? null : $ip,
-            'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
-            'referer' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null,
+            'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
+            'referer' => $_SERVER['HTTP_REFERER'] ?? null,
             'latitude' => $latitude,
             'longitude' => $longitude
         ]);

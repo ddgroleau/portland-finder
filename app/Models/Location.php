@@ -9,10 +9,6 @@ class Location extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'distance' => 'float',
-    ];
-
     protected function getLatitude(): float
     {
         return $this->attributes["latitude"];
